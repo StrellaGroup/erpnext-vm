@@ -6,6 +6,7 @@
     gather_facts: False
     pre_tasks:
       - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal mariadb-server mariadb-common)
+      - raw: apt -y update && apt install -y mariadb-server mariadb-common
       - setup: # aka gather_facts
     vars:
         - mysql_secure_installation: True
