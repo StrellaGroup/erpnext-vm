@@ -11,10 +11,6 @@
         - mysql_secure_installation: True
         - mysql_conf_tpl: templates/mariadb_config.cnf
         - nginx_conf_file: templates/nginx.conf
-    roles:
-        - mariadb
-        - nginx
-        - wkhtmltopdf
     tasks:
         - name: Install the 'Development tools' package group (Redhat)
           yum: name="@Development tools" state=present
@@ -105,3 +101,7 @@
             - python-tk
           when: ansible_os_family == 'Debian'
         - user: name="strella"
+    roles:
+        - mariadb
+        - nginx
+        - wkhtmltopdf
