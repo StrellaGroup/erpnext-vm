@@ -2,11 +2,10 @@
 - include: base.yml
 - name: Clone bench
   hosts: all
-  user: "strella"
-  pre_tasks:
-    - name: 'install python2'
-      raw: sudo apt-get -y install python-simplejson
+  user: "strella"    
   tasks:
+      - name: 'install python2'
+        raw: sudo apt-get -y install python-simplejson
       - git:
           repo=https://github.com/frappe/bench
           dest=/home/strella/bench-repo
