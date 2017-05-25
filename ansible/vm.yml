@@ -2,6 +2,7 @@
 - include: base.yml
 - name: Clone bench
   hosts: all
+  gather_facts: False
   user: "strella"    
   tasks:
       - name: 'install python2'
