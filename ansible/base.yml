@@ -16,6 +16,11 @@
         - name: Install the 'Development tools' package group (Redhat)
           yum: name="@Development tools" state=present
           when: ansible_os_family == 'RedHat'
+        - name: Create directories
+          file: path=/home/strella/{{ path }} state=directory
+          with_items:
+            - /home/strella/bench-repo
+            - /home/strella/frappe-bench
         - name: Install packages
           yum: name={{ item }} state=present
           with_items:

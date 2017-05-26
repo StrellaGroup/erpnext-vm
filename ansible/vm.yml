@@ -3,15 +3,9 @@
 - name: Clone bench
   hosts: all
   gather_facts: False
-  user: "strella"    
+  user: "strella"
   tags:
     - bench_install
-- name: Create directories
-  file: path={{ path }} state=directory
-  with_items:
-    - /home/strella
-    - /home/strella/bench-repo
-    - /home/strella/frappe-benchh 
 
 - name: Install bench
   hosts: all
