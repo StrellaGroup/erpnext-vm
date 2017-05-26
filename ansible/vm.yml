@@ -4,12 +4,6 @@
   hosts: all
   gather_facts: False
   user: "strella"    
-  tasks:
-      - name: 'install python2'
-        raw: sudo apt-get -y install python-simplejson
-      - git:
-          repo=https://github.com/frappe/bench
-          dest=/home/strella/bench-repo
   tags:
     - bench_install
 
