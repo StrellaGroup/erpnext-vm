@@ -45,9 +45,6 @@
   tags:
     - bench_setup
 
-- name: Delete frappe-bench directory
-  file: path=/home/strella/frappe-bench state=absent
-
 - name: Setup Production
   hosts: all
   become: yes
@@ -56,6 +53,8 @@
   vars:
    - branch: "production"
   tasks:
+    - name: Delete frappe-bench directory
+      file: path=/home/strella/frappe-bench state=absent
     - shell: "bench setup sudoers strella"
       args:
         chdir: "/home/strella/frappe-bench"
