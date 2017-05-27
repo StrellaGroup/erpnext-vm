@@ -62,10 +62,13 @@
         chdir: "/home/strella/frappe-bench"
         creates: "/home/strella/frappe-bench/config/supervisor.conf"
       when: branch == "master"
+      ignore_errors: True
     - shell: "bench setup production strella"
       args:
         chdir: "/home/strella/frappe-bench"
         creates: "/home/strella/frappe-bench/config/supervisor.conf"
       when: branch == "master"
+      ignore_errors: True
     - file: path="/home/strella/frappe-bench/logs/" recurse=yes owner="strella"
       when: branch == "master"
+      ignore_errors: True
