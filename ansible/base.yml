@@ -84,6 +84,7 @@
             - htop
             - mariadb-server
             - mariadb-common
+            - libmariadbd-dev
             - libmariadb-client-lgpl-dev
             - libxslt1.1
             - libxslt1-dev
