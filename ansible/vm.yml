@@ -26,6 +26,8 @@
   become_method: sudo
   gather_facts: false
   tasks:
+    - name: Delete frappe-bench directory
+      file: path=/home/strella/frappe-bench state=absent
     - bench:
         path: /home/strella/frappe-bench
         frappe_branch: "master"
@@ -53,8 +55,8 @@
   vars:
    - branch: "production"
   tasks:
-    - name: Delete frappe-bench directory
-      file: path=/home/strella/frappe-bench state=absent
+    # - name: Delete frappe-bench directory
+    #   file: path=/home/strella/frappe-bench state=absent
     - shell: "bench setup sudoers strella"
       args:
         chdir: "/home/strella/frappe-bench"
