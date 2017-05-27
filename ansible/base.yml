@@ -86,6 +86,7 @@
             - mariadb-common
             - libmariadbd-dev
             - libmariadb-client-lgpl-dev
+            - libmysqlclient-dev
             - libxslt1.1
             - libxslt1-dev
             - redis-server
