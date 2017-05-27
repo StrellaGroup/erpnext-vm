@@ -26,8 +26,8 @@
   become_method: sudo
   gather_facts: false
   tasks:
-    - name: Delete frappe-bench directory
-      file: path=/home/strella/frappe-bench state=absent
+    # - name: Delete frappe-bench directory
+    #   file: path=/home/strella/frappe-bench state=absent
     - bench:
         path: /home/strella/frappe-bench
         frappe_branch: "master"
