@@ -32,10 +32,10 @@
         apps:
           - name: erpnext
             url: https://github.com/frappe/erpnext
-            branch: "develop"
+            branch: "master"
           - name: erpnext_demo
             url: https://github.com/frappe/erpnext_demo
-            branch: "develop"
+            branch: "master"
         mariadb_root_password: "frappe"
         sites:
           - name: erpnext.vm
