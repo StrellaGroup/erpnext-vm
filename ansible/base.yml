@@ -21,8 +21,8 @@
           with_items:
              - /home/strella/bench-repo
              - /home/strella/frappe-bench
-        # - name: Checkout bench-repo
-        #   git: repo=https://github.com/frappe/bench dest=/home/strella/bench-repo update=no
+        - name: Checkout bench-repo
+          git: repo=https://github.com/frappe/bench dest=/home/strella/bench-repo update=no
           # with_items:
           #  - /home/strella/bench-repo
           #  - /home/strella/frappe-bench
