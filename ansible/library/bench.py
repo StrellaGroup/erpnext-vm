@@ -7,7 +7,7 @@ import json
 def init_bench(path, frappe_branch):
     if not frappe_branch:
         frappe_branch = 'master'
-    subprocess.check_call("bench init {} --frappe-branch {}".format(path, frappe_branch), shell=True)
+    # subprocess.check_call("bench init {} --frappe-branch {}".format(path, frappe_branch), shell=True)
 
 def check_if_app_exists(app, bench_path):
     return os.path.exists(os.path.join(bench_path, 'apps', app))
