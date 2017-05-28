@@ -73,3 +73,20 @@
     - file: path="/home/strella/frappe-bench/logs/" recurse=yes owner="strella"
       when: branch == "master"
       ignore_errors: True
+
+- name: Setup extra steps
+  hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars:
+    - site: "test"
+  tasks:
+    - shell: "bench new-site --db-name erp_sgsb erp_sgsb"
+      ignore_errors: True
+    - shell: "bench --site {site} install-app erpnext"
+      ignore_errors: True
+    - shell: "bench config http_timeout 600"
+      ignore_errors: True
+    - shell: "bench setup nginx"
+      ignore_errors: True
