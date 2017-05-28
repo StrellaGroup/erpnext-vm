@@ -15,4 +15,5 @@
   service: name=mysql state=started enabled=yes
 
 - include: mysql_secure_installation.yml
-  when: mysql_secure_installation and mysql_root_password is defined
+  # when: mysql_secure_installation and mysql_root_password is defined
+  when: mysql_root_password is defined
