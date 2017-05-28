@@ -9,7 +9,7 @@
       - raw: apt -y update && apt install -y mariadb-server mariadb-common
       - setup: # aka gather_facts
     vars:
-        - mysql_secure_installation: True
+        - mysql_secure_installation: true
         - mysql_conf_tpl: templates/mariadb_config.cnf
         - nginx_conf_file: templates/nginx.conf
     tasks:
