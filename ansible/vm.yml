@@ -27,7 +27,7 @@
   gather_facts: false
   tasks:
     # - name: Delete frappe-bench directory
-    #   file: path=/home/strella/frappe-bench state=absent
+    #   file: path=/home/strella/frappe-bench state=
     - bench:
         path: /home/strella/frappe-bench
         frappe_branch: "master"
@@ -44,7 +44,7 @@
             admin_password: "admin"
             apps:
               - erpnext
-      ignore_errors: True
+      ignore_errors: yes
   tags:
     - bench_setup
 
@@ -57,22 +57,22 @@
    - branch: "production"
   tasks:
     # - name: Delete frappe-bench directory
-    #   file: path=/home/strella/frappe-bench state=absent
+    #   file: path=/home/strella/frappe-bench state=
     - shell: "bench setup sudoers strella"
       args:
         chdir: "/home/strella/frappe-bench"
         creates: "/home/strella/frappe-bench/config/supervisor.conf"
       when: branch == "master"
-      ignore_errors: True
+      ignore_errors: yes
     - shell: "bench setup production strella"
       args:
         chdir: "/home/strella/frappe-bench"
         creates: "/home/strella/frappe-bench/config/supervisor.conf"
       when: branch == "master"
-      ignore_errors: True
+      ignore_errors: yes
     - file: path="/home/strella/frappe-bench/logs/" recurse=yes owner="strella"
       when: branch == "master"
-      ignore_errors: True
+      ignore_errors: yes
 
 - name: Setup extra steps
   hosts: all
@@ -83,10 +83,10 @@
     - site: "test"
   tasks:
     - shell: "bench new-site --db-name erp_sgsb erp_sgsb"
-      ignore_errors: True
+      ignore_errors: yes
     - shell: "bench --site {site} install-app erpnext"
-      ignore_errors: True
+      ignore_errors: yes
     - shell: "bench config http_timeout 600"
-      ignore_errors: True
+      ignore_errors: yes
     - shell: "bench setup nginx"
-      ignore_errors: True
+      ignore_errors: yes
