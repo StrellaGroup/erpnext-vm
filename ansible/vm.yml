@@ -44,7 +44,7 @@
             admin_password: "admin"
             apps:
               - erpnext
-      ignore_errors: yes
+      # ignore_errors: yes
   tags:
     - bench_setup
 
