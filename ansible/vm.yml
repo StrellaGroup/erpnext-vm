@@ -35,9 +35,9 @@
           - name: erpnext
             url: https://github.com/frappe/erpnext
             branch: "master"
-          - name: erpnext_demo
-            url: https://github.com/frappe/erpnext_demo
-            branch: "master"
+          # - name: erpnext_demo
+          #   url: https://github.com/frappe/erpnext_demo
+          #   branch: "master"
         mariadb_root_password: "frappe"
         sites:
           - name: erpnext.vm
