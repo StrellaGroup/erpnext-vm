@@ -20,7 +20,6 @@
   with_items:
     - 127.0.0.1
     - ::1
-
 - name: Reload privilege tables
   command: 'mysql -ne "{{ item }}"'
   with_items:
@@ -31,6 +30,12 @@
   command: 'mysql -ne "{{ item }}"'
   with_items:
     - FLUSH PRIVILEGES
+  changed_when: False
+
+- name: Take plugin away from root
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - UPDATE mysql.user SET authentication_string = PASSWORD('frappe'), plugin = 'mysql_native_password' WHERE User = 'root' AND Host = 'localhost';
   changed_when: False
 
 - name: Remove anonymous users
