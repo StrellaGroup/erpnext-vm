@@ -1,4 +1,8 @@
 ---
+- vars:
+    - mysql_secure_installation: true
+    - mysql_root_password: frappe
+
 - include: centos.yml
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version|int >= 6
 
@@ -15,5 +19,5 @@
   service: name=mysql state=started enabled=yes
 
 - include: mysql_secure_installation.yml
-  # when: mysql_secure_installation and mysql_root_password is defined
-  when: mysql_root_password is defined
+  when: mysql_secure_installation and mysql_root_password is defined
+  # when: mysql_root_password is defined
