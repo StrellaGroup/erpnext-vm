@@ -10,6 +10,7 @@
       - setup: # aka gather_facts
     vars:
         - mysql_secure_installation: true
+	- mysql_root_password: frappe
         - mysql_conf_tpl: templates/mariadb_config.cnf
         - nginx_conf_file: templates/nginx.conf
     tasks:
