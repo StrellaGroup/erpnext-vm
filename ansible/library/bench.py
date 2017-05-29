@@ -56,29 +56,29 @@ def main():
         changed = True
 
 
-    # for app in module.params['apps']:
-    #     if not check_if_app_exists(app['name'], bench_path):
-    #         if module.check_mode:
-    #             module.exit_json(changed=True)
-    #         get_app(app['name'], app['url'], app.get('branch', 'master'), bench_path)
-    #         changed = True
-    #
-    # for site in module.params['sites']:
-    #     if not check_if_site_exists(site['name'], bench_path):
-    #         if module.check_mode:
-    #             module.exit_json(changed=True)
-    #
-    #         mariadb_root_password = module.params.get('mariadb_root_password')
-    #         if not mariadb_root_password:
-    #             module.fail_json(msg="MariaDB root password not passed")
-    #
-    #         if not site.get('admin_password'):
-    #             module.fail_json(msg="Admin password not passed for {}".format(site['name']))
-    #
-    #         install_site(site, mariadb_root_password, bench_path)
-    #         changed = True
-    #
-    # module.exit_json(changed=changed)
+    for app in module.params['apps']:
+        if not check_if_app_exists(app['name'], bench_path):
+            if module.check_mode:
+                module.exit_json(changed=True)
+            get_app(app['name'], app['url'], app.get('branch', 'master'), bench_path)
+            changed = True
+
+    for site in module.params['sites']:
+        if not check_if_site_exists(site['name'], bench_path):
+            if module.check_mode:
+                module.exit_json(changed=True)
+
+            mariadb_root_password = module.params.get('mariadb_root_password')
+            if not mariadb_root_password:
+                module.fail_json(msg="MariaDB root password not passed")
+
+            if not site.get('admin_password'):
+                module.fail_json(msg="Admin password not passed for {}".format(site['name']))
+
+            install_site(site, mariadb_root_password, bench_path)
+            changed = True
+
+    module.exit_json(changed=changed)
 
 from ansible.module_utils.basic import *
 main()

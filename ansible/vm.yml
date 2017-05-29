@@ -34,10 +34,10 @@
         apps:
           - name: erpnext
             url: https://github.com/frappe/erpnext
-            branch: "master"
+            branch: "develop"
           - name: erpnext_demo
             url: https://github.com/frappe/erpnext_demo
-            branch: "master"
+            branch: "develop"
         mariadb_root_password: "frappe"
         sites:
           - name: erpnext.vm
@@ -45,8 +45,8 @@
             apps:
               - erpnext
       # ignore_errors: yes
-      #  register: bench
-      #  failed_when: bench.rc !=0 and bench.rc != 2 
+        # register: bench
+        # failed_when: bench.rc !=0 and bench.rc != 2
   tags:
     - bench_setup
 
