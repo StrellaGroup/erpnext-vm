@@ -45,6 +45,8 @@
             apps:
               - erpnext
       # ignore_errors: yes
+        register: bench
+        failed_when: bench.rc !=0 and bench.rc != 2 
   tags:
     - bench_setup
 
