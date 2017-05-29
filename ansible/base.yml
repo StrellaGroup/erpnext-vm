@@ -113,7 +113,7 @@
             - tcl8.6-dev
             - tk8.6-dev
             - python-tk
-            - sshpass
+            - nodejs-legacy
           when: ansible_os_family == 'Debian'
         - user: name="strella"
     roles:
