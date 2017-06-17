@@ -19,36 +19,36 @@
     - bench_install
 
 
-- name: Setup bench
-  hosts: all
-  become: yes
-  become_user: strella
-  become_method: sudo
-  gather_facts: false
-  tasks:
-    # - name: Delete frappe-bench directory
-    #   file: path=/home/strella/frappe-bench state=
-    - bench:
-        path: /home/strella/frappe-bench
-        frappe_branch: "master"
-        apps:
-          - name: erpnext
-            url: https://github.com/frappe/erpnext
-            branch: "develop"
-          - name: erpnext_demo
-            url: https://github.com/frappe/erpnext_demo
-            branch: "develop"
-        mariadb_root_password: "frappe"
-        sites:
-          - name: erpnext.vm
-            admin_password: "admin"
-            apps:
-              - erpnext
-      # ignore_errors: yes
-        # register: bench
-        # failed_when: bench.rc !=0 and bench.rc != 2
-  tags:
-    - bench_setup
+# - name: Setup bench
+#   hosts: all
+#   become: yes
+#   become_user: strella
+#   become_method: sudo
+#   gather_facts: false
+#   tasks:
+#     # - name: Delete frappe-bench directory
+#     #   file: path=/home/strella/frappe-bench state=
+#     - bench:
+#         path: /home/strella/frappe-bench
+#         frappe_branch: "master"
+#         apps:
+#           - name: erpnext
+#             url: https://github.com/frappe/erpnext
+#             branch: "develop"
+#           - name: erpnext_demo
+#             url: https://github.com/frappe/erpnext_demo
+#             branch: "develop"
+#         mariadb_root_password: "frappe"
+#         sites:
+#           - name: erpnext.vm
+#             admin_password: "admin"
+#             apps:
+#               - erpnext
+#       # ignore_errors: yes
+#         # register: bench
+#         # failed_when: bench.rc !=0 and bench.rc != 2
+#   tags:
+#     - bench_setup
 
 - name: Setup Production
   hosts: all
