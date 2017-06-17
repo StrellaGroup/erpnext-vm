@@ -96,7 +96,7 @@
             - postfix
             - nginx
             - supervisor
-            - python-pip
+            # - python-pip
             - fontconfig
             - libxrender1
             - libxext6
