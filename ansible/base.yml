@@ -143,7 +143,9 @@
 
         - name: Link pip
           file:
-            path: src=/usr/local/bin/pip dest=/usr/bin/pip state=link
+            src: /usr/local/bin/pip
+            dest: /usr/bin/pip
+            state: link
           when: ansible_os_family == 'Debian'
 
         - user: name="strella"
