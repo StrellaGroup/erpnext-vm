@@ -13,6 +13,7 @@
         - mysql_root_password: frappe
         - mysql_conf_tpl: templates/mariadb_config.cnf
         - nginx_conf_file: templates/nginx.conf
+        - pip_install_url: https://bootstrap.pypa.io/get-pip.py
     tasks:
         - name: Install the 'Development tools' package group (Redhat)
           yum: name="@Development tools" state=present
@@ -115,6 +116,30 @@
             - python-tk
             - nodejs-legacy
           when: ansible_os_family == 'Debian'
+        - name: Create cache dir for pip downloads
+          file:
+            path: /var/cache/pip-installer
+            mode: 0755
+            state: directory
+          when: ansible_os_family == 'Debian'
+
+        - name: Pip | Download the Pip installer to /var/cache/pip-installer
+          get_url:
+            url: "{{pip_install_url}}"
+            dest: "/var/cache/pip-installer/get-pip.py"
+          when: ansible_os_family == 'Debian'
+
+        - name: Pip | Run get-pip.py to intall Pip
+          command: python /var/cache/pip-installer/get-pip.py
+          register: pip_command
+          changed_when: "'Requirement already up-to-date: pip' not in pip_command.stdout"
+          when: ansible_os_family == 'Debian'
+
+        - name: Link pip
+          file:
+            path: src=/usr/local/bin/pip dest=/usr/bin/pip state=link
+          when: ansible_os_family == 'Debian'
+             
         - user: name="strella"
     roles:
         - mariadb
