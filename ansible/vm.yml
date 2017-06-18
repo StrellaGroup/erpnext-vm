@@ -53,7 +53,7 @@
 - name: Setup Production
   hosts: all
   become: yes
-  become_user: root
+  become_user: strella
   become_method: sudo
   vars:
    - branch: "production"
