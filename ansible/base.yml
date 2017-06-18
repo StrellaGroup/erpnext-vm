@@ -137,9 +137,15 @@
 
         - name: Link pip
           file:
+            path: /usr/bin/pip
+            state: absent
+          when: ansible_os_family == 'Debian'
+
+        - name: Link pip
+          file:
             path: src=/usr/local/bin/pip dest=/usr/bin/pip state=link
           when: ansible_os_family == 'Debian'
-             
+
         - user: name="strella"
     roles:
         - mariadb
