@@ -135,7 +135,7 @@
           changed_when: "'Requirement already up-to-date: pip' not in pip_command.stdout"
           when: ansible_os_family == 'Debian'
 
-        - name: Link pip
+        - name: Link pip - delete
           file:
             path: /usr/bin/pip
             state: absent
