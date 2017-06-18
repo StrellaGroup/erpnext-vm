@@ -64,16 +64,25 @@
       args:
         chdir: "/home/strella/frappe-bench"
         creates: "/home/strella/frappe-bench/config/supervisor.conf"
+      become: yes
+      become_user: strella
+      become_method: sudo
       when: branch == "master"
       ignore_errors: yes
     - shell: "bench setup production strella"
       args:
         chdir: "/home/strella/frappe-bench"
         creates: "/home/strella/frappe-bench/config/supervisor.conf"
+      become: yes
+      become_user: strella
+      become_method: sudo
       when: branch == "master"
       ignore_errors: yes
     - file: path="/home/strella/frappe-bench/logs/" recurse=yes owner="strella"
       when: branch == "master"
+      become: yes
+      become_user: strella
+      become_method: sudo
       ignore_errors: yes
 
 - name: Setup extra steps
