@@ -88,16 +88,28 @@
 - name: Setup extra steps
   hosts: all
   become: yes
-  become_user: root
+  become_user: strella
   become_method: sudo
   vars:
     - site: "test"
   tasks:
     - shell: "bench new-site --db-name erp_sgsb erp_sgsb"
+      become: yes
+      become_user: strella
+      become_method: sudo
       ignore_errors: yes
     - shell: "bench --site {site} install-app erpnext"
+      become: yes
+      become_user: strella
+      become_method: sudo
       ignore_errors: yes
     - shell: "bench config http_timeout 600"
+      become: yes
+      become_user: strella
+      become_method: sudo
       ignore_errors: yes
     - shell: "bench setup nginx"
+      become: yes
+      become_user: strella
+      become_method: sudo
       ignore_errors: yes
